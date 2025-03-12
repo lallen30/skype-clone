@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # Frontend React application
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - skype-clone-network
+
+  # Backend Node.js/Express application
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongodb
+    environment:
+      - PORT=3001
+      - NODE_ENV=production
+      - DB_URI=mongodb://mongodb:27017/skype-clone
+      - JWT_SECRET=your_production_jwt_secret
+      - CORS_ORIGIN=http://localhost:3000
+      - SOCKET_CORS_ORIGIN=http://localhost:3000
+    volumes:
+      - backend-uploads:/app/uploads
+    networks:
+      - skype-clone-network
+
+  # MongoDB database
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - skype-clone-network
+
+networks:
+  skype-clone-network:
+    driver: bridge
+
+volumes:
+  mongodb-data:
+  backend-uploads:

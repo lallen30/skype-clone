@@ -1,124 +1,143 @@
-# Skype Clone - React Frontend
+# Skype Clone
 
-A React-based frontend for a Skype-like chat application with real-time messaging capabilities using Socket.io.
+A full-stack chat application inspired by Skype, featuring real-time messaging, user authentication, file sharing, and more.
+
+## Project Structure
+
+This project is organized into two main components:
+
+- **Frontend**: React application with TypeScript, Material UI, and Redux
+- **Backend**: Node.js/Express server with TypeScript, Socket.io, and MongoDB
 
 ## Features
 
-- User authentication (login/register)
+- User authentication (register, login, logout)
+- User profile management
+- Direct and group conversations
 - Real-time messaging with Socket.io
-- Contact list with online status indicators
-- Group chat support
+- File sharing (images, videos, documents)
+- User presence (online status)
 - Message read receipts
-- Typing indicators
-- Responsive design for mobile and desktop
-- Material UI components for a polished interface
+- Responsive design
 
 ## Tech Stack
 
-- React 19
+### Frontend
+- React
 - TypeScript
-- Redux Toolkit for state management
-- React Router for navigation
-- Socket.io for real-time communication
-- Material UI for components
-- Vite for fast development and building
+- Material UI
+- Redux Toolkit
+- React Router
+- Socket.io Client
 
-## Installation
+### Backend
+- Node.js
+- Express
+- TypeScript
+- Socket.io
+- MongoDB with Mongoose
+- JWT Authentication
+- Multer for file uploads
+
+## Getting Started
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
+- Node.js (v16+)
+- MongoDB (local or remote)
 - npm or yarn
 
-### Setup
+### Running the Frontend
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/skype-clone.git
-   cd skype-clone
+1. Navigate to the frontend directory:
    ```
-
+   cd frontend
+   ```
 2. Install dependencies:
-   ```bash
+   ```
    npm install
    ```
-
-3. Create a `.env` file in the root directory with the following content:
+3. Start the development server:
    ```
-   VITE_SOCKET_ENDPOINT=http://localhost:3001
+   npm run dev
    ```
+4. The frontend will be available at http://localhost:3000
 
-### Development
+### Running the Backend
 
-Start the development server:
-
-```bash
-npm run dev
-```
-
-This will start the application on http://localhost:5173.
-
-### Production Build
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-Preview the production build locally:
-
-```bash
-npm run preview
-```
+1. Navigate to the backend directory:
+   ```
+   cd backend
+   ```
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Create a `.env` file based on `.env.example`:
+   ```
+   cp .env.example .env
+   ```
+4. Update the `.env` file with your configuration
+5. Start the development server:
+   ```
+   npm run dev
+   ```
+6. The backend will be available at http://localhost:3001
 
 ## Docker Deployment
 
-You can also run the application using Docker:
+To run the entire application stack (frontend, backend, and MongoDB) using Docker:
 
-1. Build the Docker image:
-   ```bash
-   docker build -t skype-clone .
-   ```
+```
+docker-compose up
+```
 
-2. Run the container:
-   ```bash
-   docker run -p 80:80 skype-clone
-   ```
+This will start:
+- Frontend on http://localhost:3000
+- Backend on http://localhost:3001
+- MongoDB on port 27017
 
-The application will be available at http://localhost.
+## Development
 
-## Testing
+### Frontend Development
 
-To test the application, follow these steps:
+The frontend is built with React and uses Vite as the build tool. It's structured with:
 
-1. Start the development server:
-   ```bash
-   npm run dev
-   ```
+- Components: Reusable UI elements
+- Pages: Main application views
+- Services: API communication
+- Store: Redux state management
+- Types: TypeScript type definitions
 
-2. Open your browser and navigate to http://localhost:5173
+### Backend Development
 
-3. You will be redirected to the login page. Use the following credentials:
-   - Email: john@example.com
-   - Password: password
+The backend follows a structured architecture:
 
-4. After logging in, you'll see the chat interface with mock conversations.
+- Routes: API endpoint definitions
+- Controllers: Request handling logic
+- Models: Data schemas
+- Middleware: Request processing functions
+- Services: Business logic
+- Utils: Helper functions
 
-5. Click on a conversation to view and send messages.
+## API Documentation
 
-## Future Enhancements
-
-- Implement actual file sharing functionality
-- Add video and audio calling features
-- Implement user profile customization
-- Add notification system
-- Integrate with a real backend API
+See the [Backend README](/backend/README.md) for detailed API documentation.
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Inspired by Skype's functionality and design
+- Built with modern web technologies
+- Designed for learning and demonstration purposes
